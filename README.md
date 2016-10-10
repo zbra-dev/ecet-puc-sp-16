@@ -1,4 +1,4 @@
-# ecet-puc-sp-16
+# ECET PUC-SP
 Evento "Encontro de Ciências Exatas e Tecnologia" da Faculdade PUC-SP
 
 http://www.ecetpucsp.com.br/
