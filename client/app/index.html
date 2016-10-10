@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="puc-chat" >
+<head>
+    <title>PUC Chat</title>
+
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1" />
+
+    <link href="external-libs/angular-material/angular-material.css" rel="stylesheet" type="text/css">
+    <link href="css/styles.css" rel="stylesheet" type="text/css">
+</head>
+
+<body>
+<md-content class="body-content" layout-fill ng-view>
+</md-content>
+
+<!-- Bower components -->
+<script src="external-libs/angular/angular.js"></script>
+<script src="external-libs/angular-route/angular-route.js"></script>
+<script src="external-libs/angular-animate/angular-animate.js"></script>
+<script src="external-libs/angular-aria/angular-aria.js"></script>
+<script src="external-libs/angular-material/angular-material.js"></script>
+<script src="external-libs/angular-messages/angular-messages.js"></script>
+<script src="external-libs/underscore/underscore.js"></script>
+
+<!-- App -->
+<script type="text/javascript" src="constants.routes.js"></script>
+<script type="text/javascript" src="app.js"></script>
+
+<script type="text/javascript" src="utils/utils.module.js"></script>
+<script type="text/javascript" src="gateway/gateway.module.js"></script>
+<script type="text/javascript" src="repository/repository.module.js"></script>
+<script type="text/javascript" src="service/service.module.js"></script>
+<script type="text/javascript" src="ui/components/components.module.js"></script>
+<script type="text/javascript" src="ui/pages/chat/chat.module.js"></script>
+<script type="text/javascript" src="ui/pages/login/login.module.js"></script>
+<script type="text/javascript" src="ui/pages/pages.module.js"></script>
+
+
+<!-- Model -->
+<script type="text/javascript" src="model/message.js"></script>
+<script type="text/javascript" src="model/room.js"></script>
+<script type="text/javascript" src="model/user.js"></script>
+
+<!-- Utils -->
+
+
+<!-- Gateway -->
+
+
+<!-- Repository -->
+<script type="text/javascript" src="repository/room.repository.js"></script>
+
+<!-- Service -->
+<script type="text/javascript" src="service/room.service.js"></script>
+
+<!-- Components -->
+
+<!-- Pages -->
+<script type="text/javascript" src="ui/pages/chat/chat.controller.js"></script>
+<script type="text/javascript" src="ui/pages/login/login.controller.js"></script>
+
+
+
+</body>
+</html>
