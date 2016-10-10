@@ -32,7 +32,7 @@ public class ChatController {
 
         String userName = message.getUserName();
         if (userName == null || userName.isEmpty()) {
-            notifyErrorHandler.sendError(new JoinErrorMessage("Nome do usuário inválido!"));
+            notifyErrorHandler.sendError(new JoinErrorMessage("Nome do usuário inválido"));
             return null;
         }
 
@@ -49,13 +49,13 @@ public class ChatController {
 
         Room room = chatService.findRoomById(message.getId());
         if (room == null) {
-            notifyErrorHandler.sendError(new RoomNotFoundMessageError("A mensagem foi enviada para uma sala de chat inválida!"));
+            notifyErrorHandler.sendError(new RoomNotFoundMessageError("A mensagem foi enviada para uma sala de chat inválida"));
             return null;
         }
 
         User user = chatService.findUserByName(message.getUserName());
         if (user == null) {
-            notifyErrorHandler.sendError(new UserNotFoundError("A mensagem foi enviada para uma sala de chat inválida!"));
+            notifyErrorHandler.sendError(new UserNotFoundError("A mensagem foi enviada para uma sala de chat inválida"));
             return null;
         }
 
