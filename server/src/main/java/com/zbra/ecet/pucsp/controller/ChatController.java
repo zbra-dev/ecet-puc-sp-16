@@ -8,7 +8,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
-import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 
 import java.util.Optional;
@@ -26,7 +25,7 @@ public class ChatController {
     }
 
     @MessageMapping("/join")
-    @SendToUser("/queue/join")
+    @SendTo(value = "/topic/join")
     public Room join(@Payload JoinMessage message) {
 
         String userName = message.getUserName();
@@ -43,7 +42,7 @@ public class ChatController {
     }
 
     @MessageMapping("/message")
-    @SendToUser("/queue/message")
+    @SendTo(value = "/topic/message")
     public Message sendMessage(@Payload RoomMessage message) {
 
         Room room = chatService.findRoomById(message.getRoomId());
@@ -72,7 +71,7 @@ public class ChatController {
     }
 
     @MessageMapping("/signout")
-    @SendTo("/topic/signout")
+    @SendTo(value = "/topic/signout")
     public SingOutMessage signOut(@Payload SingOutMessage message) {
         chatService.removeUser(message.getUserName());
         return message;
