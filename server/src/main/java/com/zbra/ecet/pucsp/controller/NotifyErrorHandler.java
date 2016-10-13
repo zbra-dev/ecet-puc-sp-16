@@ -7,10 +7,14 @@ import org.springframework.stereotype.Component;
 @Component
 public class NotifyErrorHandler {
 
+    private final SimpMessagingTemplate messagingTemplate;
+
     @Autowired
-    private SimpMessagingTemplate messagingTemplate;
+    public NotifyErrorHandler(SimpMessagingTemplate messagingTemplate) {
+        this.messagingTemplate = messagingTemplate;
+    }
 
     public void sendError(ErrorMessage errorMessage) {
-        messagingTemplate.convertAndSend("/topic/error", errorMessage);
+        messagingTemplate.convertAndSend("/user/queue/error", errorMessage);
     }
 }

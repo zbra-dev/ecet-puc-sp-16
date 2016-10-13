@@ -6,31 +6,34 @@ import com.zbra.ecet.pucsp.model.User;
 import com.zbra.ecet.pucsp.service.ChatService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.messaging.handler.annotation.MessageMapping;
+import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.messaging.handler.annotation.SendTo;
 import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.Optional;
 
 @Controller
 public class ChatController {
 
-    @Autowired
-    private ChatService chatService;
+    private final ChatService chatService;
+    private final NotifyErrorHandler notifyErrorHandler;
 
     @Autowired
-    private NotifyErrorHandler notifyErrorHandler;
+    public ChatController(ChatService chatService, NotifyErrorHandler notifyErrorHandler) {
+        this.chatService = chatService;
+        this.notifyErrorHandler = notifyErrorHandler;
+    }
 
-    @RequestMapping("/room")
-    @SendToUser("/queue/room")
+    @MessageMapping("/room")
+    @SendToUser(value = "/queue/room", broadcast = false)
     public Room getActiveRoom() {
         return chatService.getActiveRoom();
     }
 
     @MessageMapping("/join")
-    @SendTo("/topic/join")
-    public User join(JoinMessage message) {
+    @SendToUser("/queue/join")
+    public User join(@Payload JoinMessage message) {
 
         String userName = message.getUserName();
         if (userName == null || userName.isEmpty()) {
@@ -46,8 +49,8 @@ public class ChatController {
     }
 
     @MessageMapping("/message")
-    @SendTo("/topic/message")
-    public Message sendMessage(RoomMessage message) {
+    @SendToUser("/queue/message")
+    public Message sendMessage(@Payload RoomMessage message) {
 
         Room room = chatService.findRoomById(message.getRoomId());
         if (room == null) {
@@ -76,7 +79,7 @@ public class ChatController {
 
     @MessageMapping("/signout")
     @SendTo("/topic/signout")
-    public SingOutMessage signOut(SingOutMessage message) {
+    public SingOutMessage signOut(@Payload SingOutMessage message) {
         chatService.removeUser(message.getUserName());
         return message;
     }
