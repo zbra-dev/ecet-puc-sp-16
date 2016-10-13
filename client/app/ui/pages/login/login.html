@@ -1,0 +1,32 @@
+<div flex layout-fill>
+    <div layout layout-fill layout-align="center start" layout-align-gt-sm="center center">
+        <div flex="100" flex-gt-sm="60" flex-gt-md="30" class="login-container md-whiteframe-z3">
+            <loading-overlay visible="loginCtrl.loading">
+                <div layout="row" layout-align="center start" layout-padding>
+                    <div flex="100" flex-gt-sm="70">
+                        <form name="form" ng-submit="loginCtrl.login(form)" novalidate>
+                            <div layout="column">
+                                <div class="md-display-2">
+                                    PUC-Chat {{loginCtrl.user.userName}}
+                                </div>
+                                <md-input-container flex>
+                                    <label>Name</label>
+                                    <input name="name" type="text" ng-model="loginCtrl.userName" required maxlength="30" autofocus />
+                                    <div ng-messages="form.userName.$error" role="alert">
+                                        <div ng-message="required">Name required</div>
+                                    </div>
+                                </md-input-container>
+                                <div layout="row">
+                                    <div flex></div>
+                                    <md-button class="md-raised md-primary" type="submit">
+                                        Join
+                                    </md-button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </loading-overlay>
+        </div>
+    </div>
+</div>

@@ -3,29 +3,25 @@
 
     angular
         .module('puc-chat.repository')
-        .factory('roomRepository', ['$q', RoomRepository]);
+        .factory('roomRepository', [RoomRepository]);
 
-    function RoomRepository($q) {
-        var rooms = [];
-        rooms.push(new Room(1, 'first room'));
+    function RoomRepository() {
+        var currentRoom = {};
 
         return {
-            getRoom: getRoom
+            getRoom: getRoom,
+            setRoom: setRoom
         };
+        
+        function getRoom() {
+            return currentRoom;
+        }
 
-        function getRoom(roomId) {
-            var deferred = $q.defer();
-
-            var room = _.find(rooms, function(r) { return r.id === roomId});
-
-            if(room){
-                deferred.resolve(room);
-            } else{
-                deferred.reject();
-            }
-            
-            return deferred.promise;
+        function setRoom(room) {
+            currentRoom.id = room.id;
+            currentRoom.name = room.name;
+            currentRoom.users = room.users;
+            currentRoom.messages = room.messages;
         }
     }
-
 })();

@@ -1,0 +1,4 @@
+<div layout="column" id="message{{message.id}}" class="chat-message" ng-repeat="message in chatMessagesCtrl.messages track by $index">
+    <span class="md-title">{{message.owner.userName}}</span>
+    <span class="break-text" style="margin-left:2vw;">{{message.content}}</span>
+</div>

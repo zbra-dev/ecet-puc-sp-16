@@ -1,2 +1,21 @@
-{{chatCtrl.room.id}}
-{{chatCtrl.room.name}}
+<loading-overlay visible="!chatCtrl.room">
+    <div layout="row" ng-show="chatCtrl.room">
+        <div flex-xs="50" flex-sm="30" flex="20">
+            <div class="chat-users-container">
+                <chat-users users="chatCtrl.room.users">
+                </chat-users>
+            </div>
+        </div>
+        <div layout="column" flex-xs="50" flex-sm="70" flex="80">
+            <div class="chat-messages-container" flex>
+                <chat-messages messages="chatCtrl.room.messages">
+                </chat-messages>
+            </div>
+            <md-divider></md-divider>
+            <div class="message-bar-container" style="height:100px; padding:10px;">
+                <message-bar room="chatCtrl.room">
+                </message-bar>
+            </div>
+        </div>
+    </div>
+</loading-overlay>

@@ -15,16 +15,20 @@
 </md-content>
 
 <!-- Bower components -->
+<script src="external-libs/jquery/dist/jquery.js"></script>
 <script src="external-libs/angular/angular.js"></script>
 <script src="external-libs/angular-route/angular-route.js"></script>
 <script src="external-libs/angular-animate/angular-animate.js"></script>
 <script src="external-libs/angular-aria/angular-aria.js"></script>
 <script src="external-libs/angular-material/angular-material.js"></script>
 <script src="external-libs/angular-messages/angular-messages.js"></script>
+<script src="external-libs/sockjs-client/dist/sockjs-1.0.3.js"></script>
+<script src="external-libs/stomp-websocket/lib/stomp.js"></script>
+
 <script src="external-libs/underscore/underscore.js"></script>
 
 <!-- App -->
-<script type="text/javascript" src="constants.routes.js"></script>
+<script type="text/javascript" src="constants.js"></script>
 <script type="text/javascript" src="app.js"></script>
 
 <script type="text/javascript" src="utils/utils.module.js"></script>
@@ -36,31 +40,44 @@
 <script type="text/javascript" src="ui/pages/login/login.module.js"></script>
 <script type="text/javascript" src="ui/pages/pages.module.js"></script>
 
-
 <!-- Model -->
 <script type="text/javascript" src="model/message.js"></script>
 <script type="text/javascript" src="model/room.js"></script>
 <script type="text/javascript" src="model/user.js"></script>
 
 <!-- Utils -->
-
+<script type="text/javascript" src="utils/local-storage.service.js"></script>
+<script type="text/javascript" src="utils/notification.service.js"></script>
 
 <!-- Gateway -->
-
+<script type="text/javascript" src="gateway/stomp/command.js"></script>
+<script type="text/javascript" src="gateway/command/command.context.js"></script>
+<script type="text/javascript" src="gateway/command/processor/join-room-command.processor.js"></script>
+<script type="text/javascript" src="gateway/command/processor/sign-out-command.processor.js"></script>
+<script type="text/javascript" src="gateway/command/processor/message-command.processor.js"></script>
+<script type="text/javascript" src="gateway/command/processor/command-processor.factory.js"></script>
+<script type="text/javascript" src="gateway/stomp/stomp.service.js"></script>
+<script type="text/javascript" src="gateway/session-management/session-management.service.js"></script>
 
 <!-- Repository -->
 <script type="text/javascript" src="repository/room.repository.js"></script>
+<script type="text/javascript" src="repository/user.repository.js"></script>
 
 <!-- Service -->
 <script type="text/javascript" src="service/room.service.js"></script>
+<script type="text/javascript" src="service/login.service.js"></script>
+<script type="text/javascript" src="service/user.service.js"></script>
+<script type="text/javascript" src="service/message.service.js"></script>
 
 <!-- Components -->
+<script type="text/javascript" src="ui/components/loading-overlay/loading-overlay.component.js"></script>
+<script type="text/javascript" src="ui/components/chat-messages/chat-messages.component.js"></script>
+<script type="text/javascript" src="ui/components/chat-users/chat-users.component.js"></script>
+<script type="text/javascript" src="ui/components/message-bar/message-bar.component.js"></script>
 
 <!-- Pages -->
 <script type="text/javascript" src="ui/pages/chat/chat.controller.js"></script>
 <script type="text/javascript" src="ui/pages/login/login.controller.js"></script>
-
-
 
 </body>
 </html>

@@ -32,7 +32,7 @@
                 controllerAs: 'chatCtrl'
             })
             .otherwise({
-                redirectTo: routes.CHAT
+                redirectTo: routes.LOGIN
             });
     }
 })();

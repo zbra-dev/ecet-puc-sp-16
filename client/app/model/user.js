@@ -1,8 +1,5 @@
-(function () {
-    'use strict';
+'use strict';
 
-    function User(id, name){
-        this.id = id;
-        this.name = name;
-    }
-});
+function User(userName) {
+    this.userName = userName;
+}
