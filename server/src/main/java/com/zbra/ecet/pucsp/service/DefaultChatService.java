@@ -4,6 +4,9 @@ import com.zbra.ecet.pucsp.model.Room;
 import com.zbra.ecet.pucsp.model.User;
 import org.springframework.stereotype.Service;
 
+import java.util.Optional;
+import java.util.stream.Stream;
+
 @Service
 class DefaultChatService implements ChatService {
 
@@ -20,16 +23,24 @@ class DefaultChatService implements ChatService {
 
     @Override
     public Room findRoomById(String id) {
-        return null;
+        return room;
     }
 
     @Override
-    public User findUserByName(String userName) {
-        return null;
+    public Optional<User> findUserByName(String userName) {
+        return Stream.of(room.getUsers()).filter(u -> u.getUserName().equals(userName)).findAny();
     }
 
     @Override
     public void addUser(User user) {
         room.addUser(user);
+    }
+
+    @Override
+    public void removeUser(String userName) {
+        Optional<User> userMaybe = findUserByName(userName);
+        if (userMaybe.isPresent()) {
+            room.removeUser(userMaybe.get());
+        }
     }
 }

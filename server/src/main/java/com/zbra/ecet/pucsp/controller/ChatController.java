@@ -11,6 +11,8 @@ import org.springframework.messaging.simp.annotation.SendToUser;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
+import java.util.Optional;
+
 @Controller
 public class ChatController {
 
@@ -53,8 +55,8 @@ public class ChatController {
             return null;
         }
 
-        User user = chatService.findUserByName(message.getUserName());
-        if (user == null) {
+        Optional<User> userMaybe = chatService.findUserByName(message.getUserName());
+        if (!userMaybe.isPresent()) {
             notifyErrorHandler.sendError(new UserNotFoundError("A mensagem foi enviada para uma sala de chat inválida"));
             return null;
         }
@@ -65,10 +67,17 @@ public class ChatController {
             return null;
         }
 
-        Message newMessage = new Message(user, message.getContent());
+        Message newMessage = new Message(userMaybe.get(), message.getContent());
 
         room.addMessage(newMessage);
 
         return newMessage;
+    }
+
+    @MessageMapping("/signout")
+    @SendTo("/topic/signout")
+    public SingOutMessage signOut(SingOutMessage message) {
+        chatService.removeUser(message.getUserName());
+        return message;
     }
 }
