@@ -25,15 +25,9 @@ public class ChatController {
         this.notifyErrorHandler = notifyErrorHandler;
     }
 
-    @MessageMapping("/room")
-    @SendToUser(value = "/queue/room", broadcast = false)
-    public Room getActiveRoom() {
-        return chatService.getActiveRoom();
-    }
-
     @MessageMapping("/join")
     @SendToUser("/queue/join")
-    public User join(@Payload JoinMessage message) {
+    public Room join(@Payload JoinMessage message) {
 
         String userName = message.getUserName();
         if (userName == null || userName.isEmpty()) {
@@ -45,7 +39,7 @@ public class ChatController {
 
         chatService.addUser(newUser);
 
-        return newUser;
+        return chatService.getActiveRoom();
     }
 
     @MessageMapping("/message")
