@@ -8,6 +8,8 @@ public class Message {
     private final User owner;
     private final String content;
 
+    private String roomId;
+
     public Message(User owner, String content) {
         id = UUID.randomUUID().toString();
         this.owner = owner;
@@ -24,5 +26,13 @@ public class Message {
 
     public String getId() {
         return id;
+    }
+
+    public String getRoomId() {
+        return roomId;
+    }
+
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 }

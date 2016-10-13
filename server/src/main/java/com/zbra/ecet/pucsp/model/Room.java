@@ -25,6 +25,7 @@ public class Room {
     }
 
     public void addMessage(Message message) {
+        message.setRoomId(id);
         messages.add(message);
     }
 
