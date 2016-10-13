@@ -49,7 +49,7 @@ public class ChatController {
     @SendTo("/topic/message")
     public Message sendMessage(RoomMessage message) {
 
-        Room room = chatService.findRoomById(message.getId());
+        Room room = chatService.findRoomById(message.getRoomId());
         if (room == null) {
             notifyErrorHandler.sendError(new RoomNotFoundMessageError("A mensagem foi enviada para uma sala de chat inválida"));
             return null;

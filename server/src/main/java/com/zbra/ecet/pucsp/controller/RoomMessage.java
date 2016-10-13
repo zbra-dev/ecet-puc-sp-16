@@ -2,16 +2,16 @@ package com.zbra.ecet.pucsp.controller;
 
 public class RoomMessage {
 
-    private String id;
+    private String roomId;
     private String userName;
     private String content;
 
-    public String getId() {
-        return id;
+    public String getRoomId() {
+        return roomId;
     }
 
-    public void setId(String id) {
-        this.id = id;
+    public void setRoomId(String roomId) {
+        this.roomId = roomId;
     }
 
     public String getUserName() {
