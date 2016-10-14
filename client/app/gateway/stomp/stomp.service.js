@@ -3,9 +3,10 @@
 
     angular
         .module('puc-chat.gateway')
-        .factory('stompService', ['$q', StompService]);
+        .factory('stompService', stompService);
 
-    function StompService($q) {
+    stompService.$inject = ['$q'];
+    function stompService($q) {
         var stompClient;
         var requestDataMap = [];
         var eventObservers = [];

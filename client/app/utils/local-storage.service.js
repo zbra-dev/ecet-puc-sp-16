@@ -3,9 +3,9 @@
 
     angular
         .module('puc-chat.utils')
-        .factory('localStorageService', LocalStorageService);
+        .factory('localStorageService', localStorageService);
 
-    function LocalStorageService() {
+    function localStorageService() {
         return {
             store: store,
             retrieve: retrieve,

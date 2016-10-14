@@ -1,6 +1,10 @@
-'use strict';
+(function() {
+    'use strict';
 
-function Event() {
-}
+    function Event() {
+    }
 
-Event.UPDATE_ROOM = 'updateRoom';
+    Event.UPDATE_ROOM = 'updateRoom';
+
+    window.Event = Event;
+})();

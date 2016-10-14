@@ -3,9 +3,9 @@
 
     angular
         .module('puc-chat.chat')
-        .controller('chatController', ['$scope', '$location', '$timeout', 'roomService', 'userService', 'notificationService', 'loginService', 'routes', ChatController]);
+        .controller('chatController', ChatController);
 
-
+    ChatController.$inject = ['$scope', '$location', '$timeout', 'roomService', 'userService', 'notificationService', 'loginService', 'routes'];
     function ChatController($scope, $location, $timeout, roomService, userService, notificationService, loginService, routes) {
         var ctrl = this;
         ctrl.user = userService.getUser();

@@ -3,9 +3,9 @@
 
     angular
         .module('puc-chat.repository')
-        .factory('roomRepository', [RoomRepository]);
+        .factory('roomRepository', roomRepository);
 
-    function RoomRepository() {
+    function roomRepository() {
         var currentRoom = {};
 
         return {

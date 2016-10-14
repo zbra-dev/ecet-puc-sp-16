@@ -3,14 +3,15 @@
 
     angular
         .module('puc-chat.gateway')
-        .factory('sessionManagementService', ['$q', '$location', 'localStorageService', 'stompService', 'commandProcessorFactory', 'commandContext', 'routes', 'serverSettings', SessionManagementService]);
+        .factory('sessionManagementService', sessionManagementService);
 
-    function SessionManagementService($q, $location, localStorageService, stompService, commandProcessorFactory, commandContext, routes, serverSettings) {
+    sessionManagementService.$inject = ['$q', '$location', 'localStorageService', 'stompService', 'commandProcessorFactory', 'commandContext', 'routes', 'serverSettings'];
+    function sessionManagementService($q, $location, localStorageService, stompService, commandProcessorFactory, commandContext, routes, serverSettings) {
         stompService.addEventObserver(notify);
+        
         return {
             send: send
         };
-
 
         function send(command, payload) {
             var deferred = $q.defer();

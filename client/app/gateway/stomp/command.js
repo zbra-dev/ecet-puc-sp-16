@@ -1,8 +1,12 @@
-'use strict';
+(function() {
+    'use strict';
 
-function Command() {
-}
+    function Command() {
+    }
 
-Command.JOIN_ROOM = 'join';
-Command.MESSAGE = 'message';
-Command.SIGN_OUT = 'signout';
+    Command.JOIN_ROOM = 'join';
+    Command.MESSAGE = 'message';
+    Command.SIGN_OUT = 'signout';
+
+    window.Command = Command;
+})();

@@ -1,5 +1,9 @@
-'use strict';
+(function() {
+    'use strict';
 
-function User(userName) {
-    this.userName = userName;
-}
+    function User(userName) {
+        this.userName = userName;
+    }
+
+    window.User = User;
+})();
