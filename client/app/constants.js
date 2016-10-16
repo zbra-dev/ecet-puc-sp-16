@@ -9,7 +9,7 @@
         })
         .constant('serverSettings', {
             PORT: '8080',
-            PROTOCOL: 'http://',
-            URL: '192.168.10.143'
+            PROTOCOL: 'http',
+            URL: 'localhost'
         });
 })();

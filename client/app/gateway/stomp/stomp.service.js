@@ -27,7 +27,7 @@
 
             var deferred = $q.defer();
 
-            var server = serverSettings.protocol + serverSettings.url + ':' + serverSettings.port;
+            var server = serverSettings.protocol + '://' + serverSettings.url + ':' + serverSettings.port;
             var sockJS = new SockJS(server + '/chat');
 
             stompClient = Stomp.over(sockJS);
