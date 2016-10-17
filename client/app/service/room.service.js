@@ -3,9 +3,10 @@
 
     angular
         .module('puc-chat.service')
-        .factory('roomService', ['$q', '$location', 'routes', 'roomRepository', 'userRepository', 'sessionManagementService', RoomService]);
+        .factory('roomService', roomService);
 
-    function RoomService($q, $location, routes, roomRepository, userRepository, sessionManagementService) {
+    roomService.$inject = ['$q', '$location', 'routes', 'roomRepository', 'userRepository', 'sessionManagementService'];
+    function roomService($q, $location, routes, roomRepository, userRepository, sessionManagementService) {
         return {
             joinRoom: joinRoom,
             getRoom: getRoom

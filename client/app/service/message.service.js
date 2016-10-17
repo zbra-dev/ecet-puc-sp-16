@@ -3,9 +3,10 @@
 
     angular
         .module('puc-chat.service')
-        .factory('messageService', ['$q', 'sessionManagementService', MessageService]);
+        .factory('messageService', messageService);
 
-    function MessageService($q, sessionManagementService) {
+    messageService.$inject = ['$q', 'sessionManagementService'];
+    function messageService($q, sessionManagementService) {
         return {
             sendMessage: sendMessage
         };

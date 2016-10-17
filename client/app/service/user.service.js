@@ -3,9 +3,10 @@
 
     angular
         .module('puc-chat.service')
-        .factory('userService', ['userRepository', UserService]);
+        .factory('userService', userService);
 
-    function UserService(userRepository) {
+    userService.$inject = ['userRepository'];
+    function userService(userRepository) {
         return {
             getUser: getUser
         };

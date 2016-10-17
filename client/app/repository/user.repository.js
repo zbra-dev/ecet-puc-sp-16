@@ -3,9 +3,10 @@
 
     angular
         .module('puc-chat.repository')
-        .factory('userRepository', ['localStorageService', UserRepository]);
-
-    function UserRepository(localStorageService) {
+        .factory('userRepository', userRepository);
+    
+    userRepository.$inject = ['localStorageService'];
+    function userRepository(localStorageService) {
         return {
             getUser: getUser,
             setUser: setUser

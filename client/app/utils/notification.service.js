@@ -3,9 +3,10 @@
 
     angular
         .module('puc-chat.utils')
-        .factory('notificationService', ['$mdToast', NotificationService]);
+        .factory('notificationService', notificationService);
 
-    function NotificationService($mdToast) {
+    notificationService.$inject = ['$mdToast'];
+    function notificationService($mdToast) {
         var TOAST_POSITION = 'right bottom';
         var TOAST_HIDE_DELAY = 5000;
 
@@ -28,5 +29,4 @@
             });
         }
     }
-
 })();

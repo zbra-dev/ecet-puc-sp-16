@@ -3,9 +3,9 @@
 
     angular
         .module('puc-chat.components')
-        .directive('loadingOverlay', LoadingOverlayComponent);
+        .directive('loadingOverlay', loadingOverlayComponent);
 
-    function LoadingOverlayComponent() {
+    function loadingOverlayComponent() {
         return {
             restrict: 'E',
             require: ['^mdContent'],
@@ -18,6 +18,6 @@
             transclude: true,
             controller: function () {
             }
-        }
+        };
     }
 })();

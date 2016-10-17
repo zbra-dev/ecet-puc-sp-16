@@ -3,9 +3,10 @@
 
     angular
         .module('puc-chat.service')
-        .factory('loginService', ['userRepository', 'localStorageService', 'sessionManagementService', LoginService]);
+        .factory('loginService', loginService);
 
-    function LoginService(userRepository, localStorageService, sessionManagementService) {
+    loginService.$inject = ['userRepository', 'localStorageService', 'sessionManagementService'];
+    function loginService(userRepository, localStorageService, sessionManagementService) {
         return {
             login: login,
             logout: logout

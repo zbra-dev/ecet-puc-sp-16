@@ -3,9 +3,9 @@
 
     angular
         .module('puc-chat.components')
-        .directive('chatMessages', ChatMessagesComponent);
+        .directive('chatMessages', chatMessagesComponent);
 
-    function ChatMessagesComponent() {
+    function chatMessagesComponent() {
         return {
             restrict: 'E',
             scope: true,
@@ -14,10 +14,11 @@
             bindToController: {
                 messages: '='
             },
-            controller: ['$scope', '$location', '$anchorScroll', ChatMessagesController]
-        }
+            controller: ChatMessagesController
+        };
     }
 
+    ChatMessagesController.$inject = ['$scope', '$location', '$anchorScroll'];
     function ChatMessagesController($scope, $location, $anchorScroll) {
         var ctrl = this;
 
@@ -27,9 +28,9 @@
             }
             return 0;
         }, function (length) {
-            if (length) {
+            if (!!length) {
                 var message = ctrl.messages[length - 1];
-                if (message) {
+                if (!!message) {
                     $scope.$$postDigest(function () {
                         var element = angular.element('#message' + message.id)[0];
                         if (element && element.scrollIntoView) {
@@ -38,6 +39,6 @@
                     });
                 }
             }
-        })
+        });
     }
 })();

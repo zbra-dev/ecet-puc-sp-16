@@ -3,9 +3,9 @@
 
     angular
         .module('puc-chat.gateway')
-        .factory('commandProcessorFactory', CommandProcessorFactory);
+        .factory('commandProcessorFactory', commandProcessorFactory);
 
-    function CommandProcessorFactory() {
+    function commandProcessorFactory() {
         var commandProcessors = {};
         commandProcessors[Command.JOIN_ROOM] = new JoinRoomCommandProcessor();
         commandProcessors[Command.MESSAGE] = new MessageCommandProcessor();
@@ -33,7 +33,6 @@
             setTimeout(function () {
                 decorated.process(payload, commandProcessorContext);
             }, COMMAND_PROCESSOR_TIMEOUT);
-        }
-
+        };
     }
 })();

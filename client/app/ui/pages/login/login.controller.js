@@ -3,9 +3,9 @@
 
     angular
         .module('puc-chat.login')
-        .controller('loginController', ['$location', 'roomService', 'loginService', 'notificationService', 'routes', LoginController]);
+        .controller('loginController', LoginController);
 
-
+    LoginController.$inject = ['$location', 'roomService', 'loginService', 'notificationService', 'routes'];
     function LoginController($location, roomService, loginService, notificationService, routes) {
         var ctrl = this;
         ctrl.loading = false;
@@ -26,8 +26,6 @@
                         ctrl.loading = false;
                     });
             }
-        }
+        };
     }
-
-
 })();

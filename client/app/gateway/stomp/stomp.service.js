@@ -3,9 +3,10 @@
 
     angular
         .module('puc-chat.gateway')
-        .factory('stompService', ['$q', StompService]);
+        .factory('stompService', stompService);
 
-    function StompService($q) {
+    stompService.$inject = ['$q'];
+    function stompService($q) {
         var stompClient;
         var requestDataMap = [];
         var eventObservers = [];
@@ -26,7 +27,7 @@
 
             var deferred = $q.defer();
 
-            var server = serverSettings.protocol + serverSettings.url + ':' + serverSettings.port;
+            var server = serverSettings.protocol + '://' + serverSettings.url + ':' + serverSettings.port;
             var sockJS = new SockJS(server + '/chat');
 
             stompClient = Stomp.over(sockJS);

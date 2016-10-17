@@ -3,9 +3,9 @@
 
     angular
         .module('puc-chat.components')
-        .directive('chatUsers', ChatUsersComponent);
+        .directive('chatUsers', chatUsersComponent);
 
-    function ChatUsersComponent() {
+    function chatUsersComponent() {
         return {
             restrict: 'E',
             scope: true,
@@ -16,6 +16,6 @@
             },
             controller: function () {
             }
-        }
+        };
     }
 })();

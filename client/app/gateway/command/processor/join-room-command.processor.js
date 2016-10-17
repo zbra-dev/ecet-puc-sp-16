@@ -1,9 +1,13 @@
-'use strict';
+(function() {
+    'use strict';
 
-function JoinRoomCommandProcessor() {
-    
-    this.process = function(room, commandContext){
+    function JoinRoomCommandProcessor() { 
+    }
+
+    JoinRoomCommandProcessor.prototype.process = function(room, commandContext){
         commandContext.getRoomRepository().setRoom(room);
         commandContext.getScope().$broadcast(Event.UPDATE_ROOM);
-    }
-}
+    };
+
+    window.JoinRoomCommandProcessor = JoinRoomCommandProcessor;
+})();
