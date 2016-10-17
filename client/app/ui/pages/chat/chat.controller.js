@@ -3,10 +3,10 @@
 
     angular
         .module('puc-chat.chat')
-        .controller('chatController', ['$scope', '$location', '$timeout', 'roomService', 'userService', 'notificationService', 'loginService', 'routes', ChatController]);
+        .controller('chatController', ['$scope', '$location', '$timeout', '$window', 'roomService', 'userService', 'notificationService', 'loginService', 'routes', ChatController]);
 
 
-    function ChatController($scope, $location, $timeout, roomService, userService, notificationService, loginService, routes) {
+    function ChatController($scope, $location, $timeout, $window, roomService, userService, notificationService, loginService, routes) {
         var ctrl = this;
         ctrl.user = userService.getUser();
         ctrl.room = null;
@@ -30,6 +30,10 @@
         var timeout = $timeout(function(){
             $location.path(routes.LOGIN);
         }, 2000);
+
+        $window.onbeforeunload = function(){
+            loginService.logout();
+        };
 
         $scope.$on('$destroy', function () {
             loginService.logout();
