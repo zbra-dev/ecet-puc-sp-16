@@ -15,9 +15,8 @@
                 room: '='
             },
             controller: ['userService', 'messageService', MessageBarController]
-        }
+        };
     }
-
 
     function MessageBarController(userService, messageService) {
         var ctrl = this;
@@ -30,7 +29,6 @@
                 messageService.sendMessage(ctrl.room, new Message((count++).toString(), ctrl.room.id, ctrl.user, ctrl.message));
                 ctrl.message = "";
             }
-        }
-
+        };
     }
 })();
